@@ -1,0 +1,352 @@
+﻿<phone:PhoneApplicationPage 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:mangoBgAnimation"
+    xmlns:kit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:eim="clr-namespace:Microsoft.Expression.Interactivity.Media;assembly=Microsoft.Expression.Interactions"
+    x:Class="mangoBgAnimation.MainPage"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+		<Storyboard x:Name="sb_shuffle">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="bgControl">
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <Storyboard x:Name="sb_next">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="bgControl">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse   Stroke="#FFF9F9F9"/>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        <Style TargetType="Rectangle" x:Key="TileRectangleStyle">
+            <Setter Property="Width" Value="185"/>
+            <Setter Property="Height" Value="185"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="local:MetroInMotion.Tilt" Value="3"/>
+            <Setter Property="Fill" Value="Blue"/>
+        </Style>
+        <Style TargetType="local:BgControl" x:Key="TileStyle">
+            <Setter Property="Width" Value="185"/>
+            <Setter Property="Height" Value="185"/>
+            <Setter Property="Margin" Value="5"/>
+            
+            <Setter Property="Background" Value="Blue"/>
+        </Style>
+    	<Storyboard x:Name="Storyboard1">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="daMaoXian">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="daMaoXian">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-280"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="daMaoXian">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-45"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-90"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="zhenXinHua">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-80"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="zhenXinHua">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-20"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-90"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="zhenXinHua">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="daList">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-20"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-90"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="zhenList">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-45"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-90"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimation Duration="0:0:0.1" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" Storyboard.TargetName="daAdd" d:IsOptimized="True"/>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="daAdd">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-20"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-90"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="zhenAdd">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-45"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-90"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="daList">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="zhenList">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-280"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="daList">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-80"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="zhenList">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="daAdd">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="daAdd">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-80"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="zhenAdd">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-280"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="zhenAdd">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    	<Storyboard x:Name="Storyboard2">
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="zhenXinHua">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-80"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="daList">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-80"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="daAdd">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-80"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="zhenXinHua">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-90"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-30"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="daList">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-90"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-30"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="daAdd">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-90"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-30"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="zhenXinHua">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="daList">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="daAdd">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="daMaoXian">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="zhenList">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="zhenAdd">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="daMaoXian">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-280"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-50"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="zhenList">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-280"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-50"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="zhenAdd">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-280"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-50"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="daMaoXian">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-90"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-60"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="zhenList">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-90"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-60"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="zhenAdd">
+    			<EasingDoubleKeyFrame KeyTime="0" Value="-90"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-60"/>
+    			<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+    		</DoubleAnimationUsingKeyFrames>
+    	</Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+   <!-- <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+	<phone:PhoneApplicationPage.FontFamily>
+		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+	</phone:PhoneApplicationPage.FontFamily>
+	<phone:PhoneApplicationPage.FontSize>
+		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
+	</phone:PhoneApplicationPage.FontSize>
+	<phone:PhoneApplicationPage.Foreground>
+		<StaticResource ResourceKey="PhoneForegroundBrush"/>
+	</phone:PhoneApplicationPage.Foreground>
+    <kit:TransitionService.NavigationInTransition>
+        <kit:NavigationInTransition>
+            <kit:NavigationInTransition.Backward>
+                <kit:SwivelTransition Mode="FullScreenIn"/>
+            </kit:NavigationInTransition.Backward>
+            <kit:NavigationInTransition.Forward>
+                <kit:SwivelTransition Mode="FullScreenIn" />
+            </kit:NavigationInTransition.Forward>
+        </kit:NavigationInTransition>
+    </kit:TransitionService.NavigationInTransition>
+    <kit:TransitionService.NavigationOutTransition>
+        <kit:NavigationOutTransition>
+            <kit:NavigationOutTransition.Backward>
+                <kit:TurnstileTransition />
+            </kit:NavigationOutTransition.Backward>
+            <kit:NavigationOutTransition.Forward>
+                <kit:TurnstileTransition />
+            </kit:NavigationOutTransition.Forward>
+        </kit:NavigationOutTransition>
+    </kit:TransitionService.NavigationOutTransition>
+  
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="RoyalBlue">
+        <!-- <local:BgControl x:Name="bgControl" ImageUrl="Bg/2.jpg" Canvas.ZIndex="-1"  />-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--TitlePanel contains the name of the application and page title-->
+            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,0,0,28">
+                <TextBlock x:Name="ApplicationTitle" Text="真心话大冒险" FontSize="26" Style="{StaticResource PhoneTextNormalStyle}"/>
+            </StackPanel>
+
+            <!--ContentPanel - place additional content here-->
+            <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                <kit:WrapPanel>
+                    <local:BgControl x:Name="zhenXinHua" Style="{StaticResource TileStyle}" TextName="大冒险游戏" ImageUrl="/Tiles/Tile6.jpg" Background="Blue" MouseLeftButtonDown="zhenXinHua_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5"  >
+                    	<local:BgControl.Projection>
+                    		<PlaneProjection/>
+                    	</local:BgControl.Projection>
+                    	<local:BgControl.RenderTransform>
+                    		<CompositeTransform/>
+                    	</local:BgControl.RenderTransform>
+                    	<i:Interaction.Triggers>
+                    		<i:EventTrigger EventName="MouseLeftButtonDown">
+                    			<eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    		</i:EventTrigger>
+                    	</i:Interaction.Triggers>
+</local:BgControl>
+                    <local:BgControl x:Name="daMaoXian" Style="{StaticResource TileStyle}" TextName="真心话游戏"  ImageUrl="/Tiles/Tile2.jpg" Background="Blue" MouseLeftButtonDown="daMaoXian_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    	<i:Interaction.Triggers>
+                    		<i:EventTrigger EventName="MouseLeftButtonDown">
+                    			<eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    		</i:EventTrigger>
+                    	</i:Interaction.Triggers>
+                    	<local:BgControl.RenderTransform>
+                    		<CompositeTransform/>
+                    	</local:BgControl.RenderTransform>
+                    	<local:BgControl.Projection>
+                    		<PlaneProjection/>
+                    	</local:BgControl.Projection></local:BgControl>
+                    <local:BgControl x:Name="daList" Style="{StaticResource TileStyle}" TextName="大冒险题目" ImageUrl="/Tiles/Tile7.jpg" Background="Blue" MouseLeftButtonDown="daList_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    	<i:Interaction.Triggers>
+                    		<i:EventTrigger EventName="MouseLeftButtonDown">
+                    			<eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    		</i:EventTrigger>
+                    	</i:Interaction.Triggers>
+                    	<local:BgControl.Projection>
+                    		<PlaneProjection/>
+                    	</local:BgControl.Projection>
+                    	<local:BgControl.RenderTransform>
+                    		<CompositeTransform/>
+                    	</local:BgControl.RenderTransform></local:BgControl>
+                    <local:BgControl x:Name="zhenList" Style="{StaticResource TileStyle}" TextName="真心话题目"  ImageUrl="/Tiles/Tile8.jpg" Background="Blue" MouseLeftButtonDown="zhenList_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    	<i:Interaction.Triggers>
+                    		<i:EventTrigger EventName="MouseLeftButtonDown">
+                    			<eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    		</i:EventTrigger>
+                    	</i:Interaction.Triggers>
+                    	<local:BgControl.Projection>
+                    		<PlaneProjection/>
+                    	</local:BgControl.Projection>
+                    	<local:BgControl.RenderTransform>
+                    		<CompositeTransform/>
+                    	</local:BgControl.RenderTransform></local:BgControl>
+                    <local:BgControl x:Name="daAdd" Style="{StaticResource TileStyle}" TextName="大冒险添加"  ImageUrl="/Tiles/Tile4.jpg" Background="Blue" MouseLeftButtonDown="daAdd_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    	<i:Interaction.Triggers>
+                    		<i:EventTrigger EventName="MouseLeftButtonDown">
+                    			<eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    		</i:EventTrigger>
+                    	</i:Interaction.Triggers>
+                    	<local:BgControl.Projection>
+                    		<PlaneProjection/>
+                    	</local:BgControl.Projection>
+                    	<local:BgControl.RenderTransform>
+                    		<CompositeTransform/>
+                    	</local:BgControl.RenderTransform></local:BgControl>
+                    <local:BgControl x:Name="zhenAdd" Style="{StaticResource TileStyle}" TextName="真心话添加" ImageUrl="/Tiles/Tile3.jpg" Background="Blue" MouseLeftButtonDown="zhenAdd_MouseLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+                    	<i:Interaction.Triggers>
+                    		<i:EventTrigger EventName="MouseLeftButtonDown">
+                    			<eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    		</i:EventTrigger>
+                    	</i:Interaction.Triggers>
+                    	<local:BgControl.Projection>
+                    		<PlaneProjection/>
+                    	</local:BgControl.Projection>
+                    	<local:BgControl.RenderTransform>
+                    		<CompositeTransform/>
+                    	</local:BgControl.RenderTransform></local:BgControl>
+                </kit:WrapPanel>
+            </Grid>
+        </Grid>
+        
+        
+    </Grid>
+
+</phone:PhoneApplicationPage>
